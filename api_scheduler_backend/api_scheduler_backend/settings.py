@@ -15,7 +15,7 @@ import os as _os
 from django.core.management.commands.runserver import Command as runserver
 
 # Specify default port
-runserver.default_port = "5556"
+runserver.default_port = "5000"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +29,22 @@ SECRET_KEY = 'django-insecure-q2j@da4+$2m+)z(sce-r1tukq!d90(%@j98oxuwxc1@+fl$w5=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# CORS Policy
 ALLOWED_HOSTS = []
+CORS_ORIGIN_WHITELIST = ('http://localhost:5000',)
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_HEADERS = [
+  'accept',
+  'accept-encoding',
+  'authorization',
+  'content-type',
+  'origin',
+  'dnt',
+  'user-agent',
+  'x-csrftoken',
+  'x-requested-with']
+CORS_ALLOW_METHODS = ['DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT']
 
 # Application definition
 
@@ -41,7 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'api_scheduler_backend.urls'

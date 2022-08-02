@@ -24,3 +24,4 @@ yarn-error.log*
 
 # ignore python cached files
 *.pyc
+node_modules

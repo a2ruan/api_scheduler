@@ -1,68 +1,84 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+// Mandatory Imports
+import React from 'react';
 import './App.css';
-import Button from '@mui/material/Button';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+// Layouts
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 22, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+
+import axios from 'axios'; // REST API requests
+
+// Internal Component Imports
+import BasicExampleDataGrid from './components/DeviceTable';
+import FullWidthGrid from './components/FullWidthGrid';
+import ResponsiveAppBar from './components/MenuBar';
 
 function App() {
   return (
-    <html>
-      <h1>Hello World!</h1>
-      <Button variant="contained">Hello World</Button>
-
-      <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
-
-
-    </html>
-    
+    <>
+    <ResponsiveAppBar/>
+    <h1></h1>
+    <FullWidthGrid/>
+    </>
+    // <div>
+    //     <>
+    //       <h1>Hello world</h1>
+    //       <BasicExampleDataGrid></BasicExampleDataGrid>
+        
+    //     <h1>Hello world</h1>
+    //       <BasicExampleDataGrid></BasicExampleDataGrid>
+    //     </>
+    // </div>
   );
 }
 
 export default App;
+
+// export default class App extends React.Component {
+  
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       data: []
+//     };
+//   }
+
+//   componentDidMount() {
+//     // This function retrieves dictionary info from a get request
+//     axios.get('http://mkm-l10-andyru9:5000/room-list')
+//     .then(response => {
+//         console.log(typeof(response.data))
+//         const data = response.data;
+//         this.setState({ data })
+//       })
+//       .catch(error => {
+//         console.log(error);
+//       })
+//     this.timer = setInterval(() => {
+//       axios.get('http://mkm-l10-andyru9:5000/room-list')
+//     .then(response => {
+//         console.log(typeof(response.data))
+//         const data = response.data;
+//         this.setState({ data })
+//       })
+//       .catch(error => {
+//         console.log(error);
+//       })
+      
+//       // code to refresh your component.
+//     },1000)
+//   }
+
+//   componentWillUnmount() {
+//     clearInterval(this.timer);
+//   }
+
+//   render() {
+
+//     return (
+//       <div>
+//         {this.state.data.hello}
+//         <p></p>Unit testing for TableFilterable {2+2}
+//       </div>
+//     );
+//   }
+// }

@@ -1,14 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
+//import ReactDOM from 'react-dom';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+// Version 18.0 +
+//import ReactDOM from 'react-dom/client';
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>
+// );
+
+// Version 17.0 and earlier
+import ReactDOM from 'react-dom';
+ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
