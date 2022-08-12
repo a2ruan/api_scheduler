@@ -11,13 +11,39 @@ import axios from 'axios'; // REST API requests
 import BasicExampleDataGrid from './components/DeviceTable';
 import FullWidthGrid from './components/FullWidthGrid';
 import ResponsiveAppBar from './components/MenuBar';
+import TableDraggableRow from './components/TableDraggableRow';
 
 function App() {
+
+  let randomList = [
+    {
+      id: "Andy",
+      name: "Andy Ruan",
+    },
+    {
+      id: "Cindy",
+      name: "Cindy Ruan",
+    },
+    {
+      id: "Shally",
+      name: "Shally Guo",
+    },
+    {
+      id: "Michael",
+      name: "Michael Ruan",
+    },
+    {
+      id: "Tina",
+      name: "Tina Kong",
+    },
+  ];
+
   return (
     <>
     <ResponsiveAppBar/>
     <h1></h1>
     <FullWidthGrid/>
+    <TableDraggableRow/>
     </>
     // <div>
     //     <>
