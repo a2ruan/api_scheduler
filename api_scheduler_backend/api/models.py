@@ -1,28 +1,60 @@
 from django.db import models
+from django.utils.timezone import now # For populating datetime fields
+
 import string
 import random
 import uuid
 
-def generate_unique_code():
-    # Generate unique code for room
-    length = 6
-    while True:
-        code = ''.join(random.choices(string.ascii_uppercase),k=length)
-        if Room.objects.filter(code=code).count() == 0:
-            # Only exit if code is unique for all room objects
-            break
-    return code
+# def generate_unique_code():
+#     # Generate unique code for room
+#     length = 6
+#     while True:
+#         code = ''.join(random.choices(string.ascii_uppercase),k=length)
+#         if Room.objects.filter(code=code).count() == 0:
+#             # Only exit if code is unique for all room objects
+#             break
+#     return code
 
-class Device(models.Model):
-    pass
-    #name = models.TextField(unique=True)
+class Worker(models.Model):
+    # A worker represents a computer/device.  Each worker has an independant job queue (for normal jobs and debug jobs)
+
+    # Fields for self identification
+    uuid = models.UUIDField(primary_key=True, default = uuid.uuid4)
+    name = models.TextField(default="", unique=True)
+    date_created = models.DateTimeField(default=now)
+    
+
+    # Fields
+
+    # This is a text JSON representation of a dictionary, for storing custom user fields.
+    #kwargs = models.TextField()
     #auto_debug = models.BooleanField()
 
-class JobQueue(models.Model):
-    pass
+class JobTemplate(models.Model):
+    # A job template is a reusable generic job for sending a REST API call.
+    
+    # A GUID is for task templates.  Jobs will inherit its parent GUID, and also possess its own UUID.
+    guid = models.UUIDField(primary_key=True, default = uuid.uuid4) 
+    name = models.TextField(default="")
+    url = models.TextField(default="") # Rest API call url
 
-class DebugQueue(models.Model):
-    pass
+    # There are two api options: get, post
+    rest_api_method = models.TextField(default="get")
+
+class Job(JobTemplate):
+    # A Job represents an action to be performed.  For this project, it is sending a REST API call.  
+    # The Job table stores the following:
+    # 1) PendingJobs - jobs that are scheduled to run in the future
+    # 2) CurrentJobs - jobs that are currently running
+    # 3) PreviousJobs - jobs that have previously run in the past.  This category can be moved to seperate Table for improved speed.
+    uuid = models.UUIDField(primary_key=True, default = uuid.uuid4)
+
+    # There are two types of job_types:
+    # 1) normal - normal jobs are for typical scheduling
+    # 2) debug - debug jobs are jobs that are run if a Worker becomes unresponsive.  
+    # Debug jobs are typically used for recovery of the worker node i.e rebooting worker remotely
+    job_type = models.TextField(default="normal")
+    
 
 # Create your models here.
 class Room(models.Model):

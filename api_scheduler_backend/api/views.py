@@ -12,9 +12,9 @@ from .serializers import RoomSerializer
 from rest_framework.response import Response
 
 # Create your views here.
+# Views are functions that return an output i.e JSON
 
 import time
-
 
 def main(request):
     return HttpResponse("Hello")

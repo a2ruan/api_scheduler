@@ -1,6 +1,6 @@
 """
 WSGI config for api_scheduler_backend project.
-
+Note: ASGI is the updated version of WSGI
 It exposes the WSGI callable as a module-level variable named ``application``.
 
 For more information on this file, see
