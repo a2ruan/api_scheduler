@@ -30,18 +30,24 @@ class Worker(models.Model):
     #kwargs = models.TextField()
     #auto_debug = models.BooleanField()
 
-class JobTemplate(models.Model):
-    # A job template is a reusable generic job for sending a REST API call.
-    
+class AbstractJob(models.Model):
     # A GUID is for task templates.  Jobs will inherit its parent GUID, and also possess its own UUID.
-    guid = models.UUIDField(primary_key=True, default = uuid.uuid4) 
+    guid = models.UUIDField(default = uuid.uuid4) 
     name = models.TextField(default="")
     url = models.TextField(default="") # Rest API call url
 
     # There are two api options: get, post
     rest_api_method = models.TextField(default="get")
 
-class Job(JobTemplate):
+    class Meta:
+        abstract = True
+
+class JobTemplate(AbstractJob):
+    # A job template is a reusable generic job for sending a REST API call.
+    pass
+    
+
+class Job(AbstractJob):
     # A Job represents an action to be performed.  For this project, it is sending a REST API call.  
     # The Job table stores the following:
     # 1) PendingJobs - jobs that are scheduled to run in the future

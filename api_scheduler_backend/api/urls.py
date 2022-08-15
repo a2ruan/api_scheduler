@@ -6,5 +6,6 @@ urlpatterns = [
     #path('',main),
     path('room-create',RoomView.as_view()),
     path('room-list',RoomList.as_view()),
-    path('room-view',RoomView.as_view())
+    path('room-view',RoomView.as_view()),
+    path('workers',WorkerView.as_view())
 ]

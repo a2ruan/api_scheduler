@@ -4,9 +4,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Serializers 
-from .models import Room
+from .models import *
 from rest_framework import generics
-from .serializers import RoomSerializer
+from .serializers import RoomSerializer, WorkerSerializer
 
 # React connection
 from rest_framework.response import Response
@@ -18,6 +18,13 @@ import time
 
 def main(request):
     return HttpResponse("Hello")
+
+class WorkerView(generics.ListAPIView):
+    queryset = Worker.objects.all()
+    serializer_class = WorkerSerializer
+
+    
+
 
 class RoomView(generics.CreateAPIView):
     queryset = Room.objects.all()
