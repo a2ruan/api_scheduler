@@ -11,4 +11,5 @@ class RoomSerializer(serializers.ModelSerializer):
 class WorkerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Worker
+        fields = '__all__' # Expose all fields
 

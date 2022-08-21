@@ -1,3 +1,6 @@
+# Handle requests and return responses
+# This is the primary REST API routing layer for handling CRUD requests
+
 
 # Hello world
 from django.shortcuts import render
@@ -6,7 +9,7 @@ from django.http import HttpResponse
 # Serializers 
 from .models import *
 from rest_framework import generics
-from .serializers import RoomSerializer, WorkerSerializer
+from .serializers import * #RoomSerializer, WorkerSerializer
 
 # React connection
 from rest_framework.response import Response
@@ -19,11 +22,24 @@ import time
 def main(request):
     return HttpResponse("Hello")
 
-class WorkerView(generics.ListAPIView):
+#class WorkerView(generics.ListCreateAPIView, generics.DestroyAPIView):
+class WorkerView(generics.ListCreateAPIView, generics.DestroyAPIView):
     queryset = Worker.objects.all()
     serializer_class = WorkerSerializer
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class RoomView(generics.CreateAPIView):

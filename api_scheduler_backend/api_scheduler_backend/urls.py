@@ -13,6 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+# Site level url that is first to recieve any REST API calls.  
+# This is routed in the following sequence.
+# urls.py (here) -> urls.py (in api folder) -> views.py (in api folder)
+
+
 from django.contrib import admin
 from django.urls import path, include
 

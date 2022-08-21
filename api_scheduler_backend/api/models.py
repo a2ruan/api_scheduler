@@ -1,3 +1,5 @@
+# Data models and entitites and relationships between data
+
 from django.db import models
 from django.utils.timezone import now # For populating datetime fields
 
