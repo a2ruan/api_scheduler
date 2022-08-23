@@ -12,5 +12,5 @@ urlpatterns = [
     path('room-list',RoomList.as_view()),
     path('room-view',RoomView.as_view()),
     path('workers',WorkerView.as_view()),
-    path('workers/<pk>',WorkerView.as_view()),
+    path('workers/uuid/<pk>',WorkerView.as_view()),
 ]

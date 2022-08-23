@@ -23,24 +23,9 @@ def main(request):
     return HttpResponse("Hello")
 
 #class WorkerView(generics.ListCreateAPIView, generics.DestroyAPIView):
-class WorkerView(generics.ListCreateAPIView, generics.DestroyAPIView):
+class WorkerView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
     queryset = Worker.objects.all()
     serializer_class = WorkerSerializer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class RoomView(generics.CreateAPIView):
     queryset = Room.objects.all()

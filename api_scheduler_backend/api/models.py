@@ -24,13 +24,29 @@ class Worker(models.Model):
     uuid = models.UUIDField(primary_key=True, default = uuid.uuid4)
     name = models.TextField(default="", unique=True)
     date_created = models.DateTimeField(default=now)
-    
 
     # Fields
 
     # This is a text JSON representation of a dictionary, for storing custom user fields.
     #kwargs = models.TextField()
     #auto_debug = models.BooleanField()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class AbstractJob(models.Model):
     # A GUID is for task templates.  Jobs will inherit its parent GUID, and also possess its own UUID.
@@ -46,6 +62,10 @@ class AbstractJob(models.Model):
 
 class JobTemplate(AbstractJob):
     # A job template is a reusable generic job for sending a REST API call.
+    
+    
+    # Foreign key linking the job to a Worker
+
     pass
     
 
