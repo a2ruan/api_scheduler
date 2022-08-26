@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.utils.timezone import now # For populating datetime fields
-
+from django.db.models import JSONField
 import string
 import random
 import uuid
@@ -19,11 +19,29 @@ import uuid
 
 class Worker(models.Model):
     # A worker represents a computer/device.  Each worker has an independant job queue (for normal jobs and debug jobs)
+    # For grouping workers together by location or identifier
+    group = models.TextField(default="bkc_regression")
 
     # Fields for self identification
     uuid = models.UUIDField(primary_key=True, default = uuid.uuid4)
     name = models.TextField(default="", unique=True)
     date_created = models.DateTimeField(default=now)
+
+    # Worker Options
+    auto_debug = models.BooleanField(default=False) # Indicates whether the worker will auto-trigger the debug queue on system hang
+    pause_jobs = models.BooleanField(default=False) # Indicates whether the worker's queued jobs are currently paused.  This does not stop the debug queue if the timeout is reached
+    stop_jobs = models.BooleanField(default=False) # Allows users to stop the worker from executing, including the debug queue
+    saved_job_limit = models.IntegerField(default=20) # Max number of previous jobs that have run, that will be saved
+    timeout_limit = models.IntegerField(default=300) # Amount of time (s) that a worker can be paused before triggering debug queue
+    max_debug_attempts = models.IntegerField(default=1) # Max number of times debug can be triggered before full stop
+    current_debug_attempts = models.IntegerField(default=0) # Current number of times worker tried debug queue
+    kwargs = JSONField(default={}) # Default args attached to worker
+
+    # Worker State
+    last_active_time = models.DateTimeField(default=now)
+    last_active_debug_time = models.DateTimeField(default=now)
+
+
 
     # Fields
 
