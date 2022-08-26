@@ -27,6 +27,15 @@ class WorkerView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.U
     queryset = Worker.objects.all()
     serializer_class = WorkerSerializer
 
+class APIJobTemplateView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
+    queryset = APIJobTemplate.objects.all()
+    serializer_class = APIJobTemplateSerializer
+
+class APIJobView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
+    queryset = APIJob.objects.all()
+    serializer_class = APIJobSerializer
+
+## OLD
 class RoomView(generics.CreateAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer

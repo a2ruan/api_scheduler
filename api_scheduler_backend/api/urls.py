@@ -13,4 +13,10 @@ urlpatterns = [
     path('room-view',RoomView.as_view()),
     path('workers',WorkerView.as_view()),
     path('workers/uuid/<pk>',WorkerView.as_view()),
+
+    path('jobs',APIJobView.as_view()),
+    path('jobs/uuid/<pk>',APIJobView.as_view()),
+
+    path('templates',APIJobTemplateView.as_view()),
+    path('templates/uuid/<pk>',APIJobTemplateView.as_view())
 ]
