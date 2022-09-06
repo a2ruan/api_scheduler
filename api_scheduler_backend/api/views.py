@@ -34,18 +34,3 @@ class APIJobTemplateView(generics.ListCreateAPIView, generics.DestroyAPIView, ge
 class APIJobView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
     queryset = APIJob.objects.all()
     serializer_class = APIJobSerializer
-
-## OLD
-class RoomView(generics.CreateAPIView):
-    queryset = Room.objects.all()
-    serializer_class = RoomSerializer
-
-class RoomList(generics.ListAPIView):
-    queryset = Room.objects.all()
-    serializer_class = RoomSerializer
-
-    def get(self, request):
-        #output = {'hello':'world'}
-        output = {'hello':f'world current time = {time.time()}'}
-        return Response(output)
-    

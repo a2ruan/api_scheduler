@@ -41,7 +41,8 @@ class Worker(models.Model):
     last_active_time = models.DateTimeField(default=now)
     last_active_debug_time = models.DateTimeField(default=now)
 
-class APIJobTemplate(models.Model):
+
+class Job(models.Model):
     # A job template is a reusable generic job for sending a REST API call.
     guid = models.UUIDField(default = uuid.uuid4) # Jobs are linked by guid
     url = models.TextField(default="") # Rest API call url
@@ -50,10 +51,13 @@ class APIJobTemplate(models.Model):
     # There are two api options: get, post
     api_method = models.TextField(default="get")
 
-    #class Meta:
-    #    abstract = True
+    class Meta:
+        abstract = True
 
-class APIJob(models.Model):
+class APIJobTemplate(Job):
+    pass
+
+class APIJob(Job):
     # A Job represents an action to be performed.  For this project, it is sending a REST API call.  
     # The Job table stores the following:
     # 1) PendingJobs - jobs that are scheduled to run in the future
@@ -65,7 +69,7 @@ class APIJob(models.Model):
 
     # There are two types of job_types:
     # 1) normal - normal jobs are for typical scheduling
-    # 2) debug - debug jobs are jobs that are run if a Worker becomes unresponsive.  
+    # 2) debug - debug jobs are jobs that are run if a Worker becomes unresponsive
     # Debug jobs are typically used for recovery of the worker node i.e rebooting worker remotely
     job_type = models.TextField(default="normal")
 
@@ -78,14 +82,5 @@ class APIJob(models.Model):
     # Foreign key linking the job to a Worker
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE) # Link a job to a worker.  The job will get deleted if the worker is deleted (cascade)
     apijobtemplate = models.ForeignKey(APIJobTemplate, on_delete=models.CASCADE) # Link a job template to a job.  The job will get deleted if the api job template is deleted (cascade)
-
-
-# Create your models here.
-class Room(models.Model):
-    code = models.CharField(max_length=8, default="", unique=True)
-    host = models.CharField(max_length=50, unique=True)
-    guest_can_pause = models.BooleanField(null=False, default=False)
-    votes_to_skip = models.IntegerField(null=False, default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
 
     

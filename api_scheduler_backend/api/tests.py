@@ -30,9 +30,14 @@ def modify_worker(name="Random", new_val_dict={}):
 
 
 def get_worker():
+    print("Getting workers")
     response = requests.get("http://127.0.0.1:5000/workers")
-    #print(response.content)
-    return response.content.decode('utf-8') or None
+    print(response.content)
+    output = response.content.decode('utf-8')
+    output = output.replace("false","False")
+    output = output.replace("true","True")
+
+    return output or None
 
 def get_worker2():
     response = urllib.request.urlopen('http://127.0.0.1:5000/workers')
@@ -42,7 +47,36 @@ def get_worker2():
 
 if __name__ == "__main__":
     
+    # Test Worker
+    #import ipdb
+    #ipdb.set_trace()
+    # Resume test on single worker
+
+
+    input_name = input("Enter Name to unpause:")
+    worker_string = get_worker()
+    for list_item in eval(worker_string):
+        print(list_item)
+
+        payload = {
+        'pause_jobs':False
+        }
+
+        modify_worker(input_name, payload)
+        
+
+        
+    """
+    payload = {
+        'pause_jobs':False
+    }
+
+    modify_worker(input_name, payload)
     
+    print("Finished patching workers")
+    """
+
+    """
     # Post, Get
     for i in range(5):
         start_time = time.time()
@@ -79,3 +113,4 @@ if __name__ == "__main__":
         print(f"Total elapsed time: {time.time() - start_time}")
     
     print("Finished deleting workers")
+    """

@@ -29,3 +29,6 @@ urlpatterns = [
     # Routing to main api urls.  For example, path("kk",include('api.urls')) will route to ../api/urls if contains kk in the url
     path('', include('api.urls'))
 ]
+
+
+
