@@ -1,9 +1,7 @@
 // Mandatory Imports
 import React from 'react';
 import './App.css';
-
 // Layouts
-
 
 import axios from 'axios'; // REST API requests
 
@@ -12,6 +10,7 @@ import BasicExampleDataGrid from './components/DeviceTable';
 import FullWidthGrid from './components/FullWidthGrid';
 import ResponsiveAppBar from './components/MenuBar';
 import TableDraggableRow from './components/TableDraggableRow';
+
 
 function App() {
 
@@ -34,16 +33,23 @@ function App() {
     },
     {
       id: "Tina",
-      name: "Tina Kong",
+      name: "Tina Konge",
     },
   ];
+  console.log(process.env.REACT_APP_SERVER_IP)
+  
+  console.log(`http://${process.env.REACT_APP_SERVER_IP}:${process.env.REACT_APP_SERVER_PORT}/workers`)
+  axios.get(`http://${process.env.REACT_APP_SERVER_IP}:${process.env.REACT_APP_SERVER_PORT}/workers`)
+      .then(res => {
+        const output = res.data;
+        console.log(output)
+      })
 
   return (
     <>
     <ResponsiveAppBar/>
-    <h1></h1>
+    <h1>{process.env.server_ip}</h1>
     <FullWidthGrid/>
-    <TableDraggableRow/>
     </>
     // <div>
     //     <>

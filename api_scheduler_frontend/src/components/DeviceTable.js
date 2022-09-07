@@ -12,7 +12,7 @@ export default function BasicExampleDataGrid() {
   });
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: "80vh", width: "100%" }}>
       <DataGrid {...data} components={{ Toolbar: GridToolbar }} />
     </div>
   );

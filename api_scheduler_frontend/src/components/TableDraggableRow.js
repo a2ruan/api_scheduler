@@ -4,11 +4,21 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Paper from "@mui/material/Paper"; // List of Jobs
 import Stack from "@mui/material/Stack"; // Card spacing
 import { List } from "@mui/material";
+import axios from 'axios';
+
+
+
 
 export default function TableDraggableRow(name) {
     let name4 = "hello"
     console.log("preprint")
     console.log(name)
+
+    // Testing axios capability for pulling data
+    //const res = axios.get('http://127.0.1:5000/workers')
+    //const data = axios.get('http://127.0.1:5000/workers').then(res => res.data);
+    //console.log(data)
+
     if (name) {
         console.log("STARTING")
         name4 = name.name;
