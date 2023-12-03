@@ -1,0 +1,10 @@
+redis
+fastapi
+fastapi_utils
+uvicorn
+dill
+psutil
+starlette
+psycopg2
+sqlalchemy
+asyncio

@@ -1,0 +1,70 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+ul.characters {
+  padding: 0;
+}
+
+.characters-thumb {
+  inline-size: fit-content;
+  min-width: 600px;
+}
+
+.MuiPaper-root.MuiPaper-outlined.MuiPaper-rounded.css-172kgz0-MuiPaper-root {
+  background-color: rgb(224, 224, 224);
+}
+
+.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
+  background-color: rgb(0 0 0 / 5%) !important;
+}
+
+.css-1aeycle {
+  border: 1px solid #000 !important;
+  border-radius:10px !important;
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,-2.8), 0px 3px 4px 1px rgba(0,0,0,0.14), 0px 9px 11px -10px rgba(0,0,0,0.12) !important;
+}
+
+textarea.jsoneditor-text {
+  width: 100%;
+  height: 55vh !important;
+}
+
+.MuiBox-root {
+  z-index: 10000;
+}

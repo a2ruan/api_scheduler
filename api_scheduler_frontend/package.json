@@ -1,0 +1,62 @@
+{
+  "name": "helloworld",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.9.3",
+    "@mui/x-data-grid": "^5.15.0",
+    "@mui/x-data-grid-generator": "^5.15.0",
+    "@mui/x-data-grid-pro": "^5.15.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.0.4",
+    "@testing-library/user-event": "^12.0.9",
+    "axios": "^0.27.2",
+    "react": "^17.0.0",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-dom": "^17.0.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4",
+    "jsoneditor":"9.10.2",
+    "jsoneditor-react":"3.1.2",
+    "react-highlight":"0.15.0",
+    "react-scrollbars-custom":"4.1.1",
+    "brace":"0.11.1",
+    "react-window":"1.8.9",
+    "memoize-one":"6.0.0",
+    "faker":"6.6.6",
+    "react-virtualized": "9.22.5"
+  },
+  "scripts": {
+    "start": "set PORT=5555 && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.2",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
